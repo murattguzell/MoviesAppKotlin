@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.navArgs
+import com.muratguzel.movieapp.R
 import com.muratguzel.movieapp.databinding.FragmentDetailsBinding
 
 
@@ -23,7 +25,7 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentDetailsBinding.inflate(inflater, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_details,container,false)
         val view = binding.root
         return view
     }
@@ -33,9 +35,8 @@ class DetailsFragment : Fragment() {
 
         val bundle: DetailsFragmentArgs by navArgs()
         val movie = bundle.movie
-        binding.toolbarDetails.title = movie.name
+       binding.movie= movie
         binding.ivMovie.setImageResource(resources.getIdentifier(movie.image, "drawable", requireContext().packageName))
-        binding.tvPrice.text = "${movie.price} ₺"
     }
 
     override fun onDestroyView() {

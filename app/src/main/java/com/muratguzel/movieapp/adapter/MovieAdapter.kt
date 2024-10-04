@@ -3,21 +3,22 @@ package com.muratguzel.movieapp.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import com.muratguzel.movieapp.R
 import com.muratguzel.movieapp.databinding.MovieRowBinding
-import com.muratguzel.movieapp.model.Movie
+import com.muratguzel.movieapp.data.entity.Movie
 import com.muratguzel.movieapp.view.MainFragmentDirections
 
 class MovieAdapter(var context: Context, var movieList: List<Movie>) :
         RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
     class MovieHolder(val binding: MovieRowBinding) : RecyclerView.ViewHolder(binding.root) {
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieHolder {
-        val binding = MovieRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding: MovieRowBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.movie_row,parent, false)
         return MovieHolder(binding)
     }
 
@@ -27,10 +28,10 @@ class MovieAdapter(var context: Context, var movieList: List<Movie>) :
 
     override fun onBindViewHolder(holder: MovieHolder, position: Int) {
         val movie = movieList[position]
+        holder.binding.movie = movie
         holder.binding.imageView.setImageResource(context.resources.getIdentifier(movie.image,"drawable",context.packageName))
-        holder.binding.tvPrice.text = "${movie.price} ₺"
         holder.binding.cardViewMovie.setOnClickListener {
-            val transition = MainFragmentDirections.actionMainFragmentToDetailsFragment(movie)
+            val transition = MainFragmentDirections.actionMainFragmentToDetailsFragment(movie = movie)
             Navigation.findNavController(it).navigate(transition)
         }
         holder.binding.btnAddToCart.setOnClickListener {

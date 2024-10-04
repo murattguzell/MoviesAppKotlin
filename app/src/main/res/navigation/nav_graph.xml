@@ -21,6 +21,6 @@
         tools:layout="@layout/fragment_details" >
         <argument
             android:name="movie"
-            app:argType="com.muratguzel.movieapp.model.Movie" />
+            app:argType="com.muratguzel.movieapp.data.entity.Movie" />
     </fragment>
 </navigation>

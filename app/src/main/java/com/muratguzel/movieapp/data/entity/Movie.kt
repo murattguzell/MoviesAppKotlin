@@ -1,4 +1,4 @@
-package com.muratguzel.movieapp.model
+package com.muratguzel.movieapp.data.entity
 
 import java.io.Serializable
 
