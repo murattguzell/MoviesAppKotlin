@@ -9,8 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.navArgs
 import com.muratguzel.movieapp.R
 import com.muratguzel.movieapp.databinding.FragmentDetailsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class DetailsFragment : Fragment() {
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!

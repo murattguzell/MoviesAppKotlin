@@ -12,12 +12,13 @@ import com.muratguzel.movieapp.adapter.MovieAdapter
 import com.muratguzel.movieapp.databinding.FragmentMainBinding
 import com.muratguzel.movieapp.data.entity.Movie
 import com.muratguzel.movieapp.viewmodel.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
     private lateinit var movieAdapter: MovieAdapter
-    private var movieList: ArrayList<Movie> = arrayListOf()
     private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {

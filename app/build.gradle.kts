@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id ("androidx.navigation.safeargs.kotlin")
     id ("com.google.devtools.ksp")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -34,6 +36,8 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+        languageVersion = "1.8"
+
     }
     buildFeatures {
         viewBinding = true
@@ -56,5 +60,10 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
 
+}
+kapt {
+    correctErrorTypes = true
 }

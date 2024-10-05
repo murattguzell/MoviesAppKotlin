@@ -10,6 +10,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.muratguzel.movieapp.R
 import com.muratguzel.movieapp.databinding.MovieRowBinding
 import com.muratguzel.movieapp.data.entity.Movie
+import com.muratguzel.movieapp.util.switch
 import com.muratguzel.movieapp.view.MainFragmentDirections
 
 class MovieAdapter(var context: Context, var movieList: List<Movie>) :
@@ -31,8 +32,7 @@ class MovieAdapter(var context: Context, var movieList: List<Movie>) :
         holder.binding.movie = movie
         holder.binding.imageView.setImageResource(context.resources.getIdentifier(movie.image,"drawable",context.packageName))
         holder.binding.cardViewMovie.setOnClickListener {
-            val transition = MainFragmentDirections.actionMainFragmentToDetailsFragment(movie = movie)
-            Navigation.findNavController(it).navigate(transition)
+            Navigation.switch(it, MainFragmentDirections.actionMainFragmentToDetailsFragment(movie = movie))
         }
         holder.binding.btnAddToCart.setOnClickListener {
             Snackbar.make(it, "${movie.name} Sepete eklendi", Snackbar.LENGTH_SHORT).show()
