@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.muratguzel.movieapp.R
 import com.muratguzel.movieapp.databinding.MovieRowBinding
@@ -30,12 +31,13 @@ class MovieAdapter(var context: Context, var movieList: List<Movie>) :
     override fun onBindViewHolder(holder: MovieHolder, position: Int) {
         val movie = movieList[position]
         holder.binding.movie = movie
-        holder.binding.imageView.setImageResource(context.resources.getIdentifier(movie.image,"drawable",context.packageName))
+        val url = "http://kasimadalan.pe.hu/filmler_yeni/resimler/${movie.resim}"
+        Glide.with(context).load(url).override(500, 750).into(holder.binding.imageView)
         holder.binding.cardViewMovie.setOnClickListener {
             Navigation.switch(it, MainFragmentDirections.actionMainFragmentToDetailsFragment(movie = movie))
         }
         holder.binding.btnAddToCart.setOnClickListener {
-            Snackbar.make(it, "${movie.name} Sepete eklendi", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(it, "${movie.ad} Sepete eklendi", Snackbar.LENGTH_SHORT).show()
         }
     }
 }

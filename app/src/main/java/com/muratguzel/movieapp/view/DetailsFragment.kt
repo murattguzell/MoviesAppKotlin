@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.muratguzel.movieapp.R
 import com.muratguzel.movieapp.databinding.FragmentDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +27,7 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_details,container,false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_details, container, false)
         val view = binding.root
         return view
     }
@@ -36,8 +37,9 @@ class DetailsFragment : Fragment() {
 
         val bundle: DetailsFragmentArgs by navArgs()
         val movie = bundle.movie
-       binding.movie= movie
-        binding.ivMovie.setImageResource(resources.getIdentifier(movie.image, "drawable", requireContext().packageName))
+        binding.movie = movie
+        val url = "http://kasimadalan.pe.hu/filmler_yeni/resimler/${movie.resim}"
+        Glide.with(requireContext()).load(url).override(500, 750).into(binding.ivMovie)
     }
 
     override fun onDestroyView() {

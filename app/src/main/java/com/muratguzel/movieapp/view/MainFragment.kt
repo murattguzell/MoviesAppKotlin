@@ -1,6 +1,7 @@
 package com.muratguzel.movieapp.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -42,10 +43,12 @@ class MainFragment : Fragment() {
         binding.mainToolBarTitle = "Filmler"
         viewModel.movieList.observe(viewLifecycleOwner){movieList->
             if (movieList!=null){
+                Log.e("Filmler", "Gİrdi")
                 movieAdapter = MovieAdapter(requireContext(), movieList)
                 binding.moviesAdapter = movieAdapter
             }
         }
+
     }
     override fun onDestroyView() {
         super.onDestroyView()

@@ -23,12 +23,18 @@
             android:background="@color/bg2"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
-            app:title="@{movie.name}"
+            app:title="@{movie.ad}"
             app:titleTextColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbarDetails"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/ivMovie"
@@ -45,7 +51,7 @@
             android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text='@{movie.price +"₺"}'
+            android:text='@{movie.fiyat +"₺"}'
             android:textSize="50sp"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"

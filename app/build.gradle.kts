@@ -62,6 +62,12 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+    // retrofit
+    implementation (libs.retrofit)
+    // gson converter
+    implementation (libs.squareup.converter.gson)
+    implementation (libs.glide)
+
 
 }
 kapt {

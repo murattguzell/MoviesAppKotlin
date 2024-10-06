@@ -2,9 +2,8 @@ package com.muratguzel.movieapp.data.entity
 
 import java.io.Serializable
 
-data class Movie(
-    var id: Int,
-    var name: String,
-    var image: String,
-    var price: String,
-) : Serializable
+data class Movie(var id:Int,
+                   var ad:String,
+                   var resim:String,
+                   var fiyat:Int) : Serializable {
+}
